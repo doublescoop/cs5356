@@ -1,13 +1,14 @@
-import "./App.css";
+import "../App.css";
 import React, { Component, useEffect, useState } from "react";
 // import MetaMaskAuth from "./metamask-auth";
 // import CloneXLogo from "./images/X.png";
-import MoaLogo from "./images/moa_logo_png.png"
-import styles from "./main-stylesheet.css";
-import shoecharm from "./images/shoecharm.png"
-import shoecharm1 from "./images/shoecharmpng.png"
+import MoaLogo from "../images/moa_logo_png.png"
+import styles from "../main-stylesheet.css";
+import shoecharm from "../images/shoecharm.png"
+import shoecharm1 from "../images/shoecharmpng.png"
 
-import groupshot from "./images/groupshot.jpeg"
+import groupshot from "../images/groupshot.jpeg"
+import { BrowserRouter as Router, Link} from 'react-router-dom';
 
 
 export default class App extends Component {
@@ -35,7 +36,7 @@ export default class App extends Component {
           <h2> Wear this <div className="hovertext"><u> shoecharm </u><img className="hovertext" src={shoecharm} alt=""/></div>to the event and be included in a <div className="hovertext"> <u> groupshot </u><img className="hovertext" src={groupshot} alt=""/></div> as POAP!</h2>
           <h2> Verify your address to see if you're eligible </h2>
           <MetaMaskAuth onAddressChanged={(address) => {}} />
-          
+          <br/>
         </div>
         
     </main>
@@ -98,7 +99,7 @@ export default class App extends Component {
       <div>
         <h2>Connected with <u> <Address userAddress={userAddress} /></u></h2>
         <div>
-          <button className="button1"
+          <button className="button-85" role="button"
             onClick={() => {setFlag(true)}}
             //add inline function to change haveNFTs = True
           >
@@ -117,19 +118,20 @@ export default class App extends Component {
 
   function Connect({ setUserAddress }) {
     if (isMobileDevice()) {
-      const dappUrl = "https://fir-57d50.web.app/home"; // TODO enter dapp URL after done.
+      const dappUrl = "metamask-auth.ilamanov.repl.co"; // TODO enter dapp URL after done.
       const metamaskAppDeepLink = "https://metamask.app.link/dapp/" + dappUrl;
       return (
         <a href={metamaskAppDeepLink}>
-          <button className="button-85" onClick={() => connect(setUserAddress)}> Connect MetaMask </button>
+          <button className="button-85" role="button"> Connect MetaMask </button>
+          <br/>
         </a>
+        
       );
     }
 
     return (
       <div className="buttonContainer">
-              <button className="button-85" onClick={() => connect(setUserAddress)}>
- Connect MetaMask </button>
+        <button className="button-85" role="button"> Connect MetaMask </button>
       </div>
       
     );
