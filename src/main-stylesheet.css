@@ -506,6 +506,7 @@ html{
 }
 
 .hovertext img {
+    width: 60%;
     display: none;
 }
 

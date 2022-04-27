@@ -29,10 +29,9 @@ export default class App extends Component {
         </div>
 
         <div className="Intro">
-          <h1 className="Intro-text"> Do you own <span className="title"></span>?</h1>
-          {/* <h1 className="Intro-text"> Let's meet, <a className="clones" href="https://clonex.rtfkt.com">Clones!</a> </h1> */}
-          <h1 className="Intro-text"> Are you coming to <a href="https://gagosian.com/exhibitions/2022/takashi-murakami-an-arrow-through-history/">Gagosian NYC</a> <br/>in May?</h1>
-          <h2> Wear this <div className="hovertext"><u> shoecharm </u><img className="hovertext" src={shoecharm} alt=""/></div>to the event and be included in a <div className="hovertext"> <u> groupshot </u><img className="hovertext" src={groupshot} alt=""/></div> as POAP!</h2>
+          <h2 className="Intro-text"> Dear <span className="title"></span>s,</h2>
+          <h1 className="Intro-text"> Wear a <div className="hovertext"><u> shoecharm </u><img className="hovertext" src={shoecharm} alt=""/></div> to <a href="https://gagosian.com/exhibitions/2022/takashi-murakami-an-arrow-through-history/">Gagosian NYC</a> and be part of a <div className="hovertext"> <u> groupshot </u><img className="hovertext" src={groupshot} alt=""/></div></h1>  
+          {/* <h3 className="Intro-text"> Are you coming to <a href="https://gagosian.com/exhibitions/2022/takashi-murakami-an-arrow-through-history/">Gagosian NYC</a> <br/>in May?</h3> */}
           <h2> Verify your address to see if you're eligible </h2>
           <MetaMaskAuth onAddressChanged={(address) => {}} />
           
@@ -98,9 +97,8 @@ export default class App extends Component {
       <div>
         <h2>Connected with <u> <Address userAddress={userAddress} /></u></h2>
         <div>
-          <button className="button1"
+          <button className="button-85"
             onClick={() => {setFlag(true)}}
-            //add inline function to change haveNFTs = True
           >
             Fetch Clones
           </button>
@@ -221,13 +219,13 @@ export default class App extends Component {
         <div>
             <div>
                 <h2><br/>Congrats, fellow CloneX holder!</h2>
+                <h3><br/>You are eligible to order a shoecharm for your Clone. </h3>
                 <img src={groupshot} width="98%" height="98%" alt="'QR code here'" />
-                <h3>As a long term holder,<br/> you are eligible to order a shoecharm for your Clone. </h3>
-                <img src={shoecharm1}/>
-                <h3>/***more description here***/
-                <br/>When you arrive at the venue physically, 
-                <br/> a chip inside of the charm will generate a groupshot as POAP. 
-                <br/> Be ready for surprise airdrops and perks as well</h3>
+                <img src={shoecharm1} width="50%"/>
+                <h3>
+                <br/>When you arrive at the venue,
+                <br/> a chip inside of the charm will check you in for a groupshot as POAP. 
+                <br/> Be ready for surprise airdrops and perks as well.</h3>
                 
                 <h3>You can wear this to any future community events. </h3>
                 <h3><br/>Please pick one NFT from your wallet below to redeem a shoecharm</h3>
