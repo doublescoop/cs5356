@@ -5,9 +5,6 @@ import React, { Component, useEffect, useState } from "react";
 // import CloneXLogo from "./images/X.png";
 import MoaLogo from "./images/moa_logo_png.png"
 import styles from "./main-stylesheet.css";
-import shoecharm from "./images/shoecharm.png"
-import shoecharm1 from "./images/shoecharmpng.png"
-import groupshot from "./images/groupshot1.jpeg"
 import eventinfo from "./images/murakamievent.png"
 import qrplaceholder from './images/qrdemo.png'
 import db from "./services/firestore";
@@ -279,30 +276,6 @@ export default class App extends Component {
           }
         })()}
       </div>
-      
-
-        // <div>
-        //   likedList? (
-        //     <div><h1>your invitation for {</h1></div>
-
-        //   ):
-        //   <div>
-        //           <h1><br/>Congrats, fellow CloneX holder!</h1>
-        //           <h2><br/>There is an event for your project in May, @NYC! </h2>
-        //           <img src={eventinfo} width="98%" height="98%" alt="'QR code here'" />
-        //           <h2><br/><strong>Please pick one NFT from your wallet below</strong> to redeem a ticket and be included in the attendance check!</h2>
-        //         </div>
-
-        //         <div className="clonepic">
-        //         {imageElements}
-        //         {/* <img src="https://clonex-assets.rtfkt.com/images/2123.png" width="50%" height="50%" alt='Clone image here'/> */}
-        //         </div>
-
-        //         <div>
-        //         <div><h2>/***order window here***/</h2></div>
-        //         <h3>See you in May 16th at Gagosian gallery!</h3>
-        //         </div>
-        // </div>
         
     ):
     <div>`oops no NFTs to show'</div>;
