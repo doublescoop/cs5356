@@ -1,20 +1,13 @@
 import "./App.css";
 import React, { Component, useEffect, useState } from "react";
-
 // import MetaMaskAuth from "./metamask-auth";
 // import CloneXLogo from "./images/X.png";
 import MoaLogo from "./images/moa_logo_png.png"
 import styles from "./main-stylesheet.css";
 import shoecharm from "./images/shoecharm.png"
 import shoecharm1 from "./images/shoecharmpng.png"
+
 import groupshot from "./images/groupshot1.jpeg"
-import eventinfo from "./images/murakamievent.png"
-import qrplaceholder from './images/qrdemo.png'
-import db from "./services/firestore";
-import { collection, addDoc, getDocs, serverTimestamp } from "firebase/firestore"; 
-
-
-
 
 
 export default class App extends Component {
@@ -37,7 +30,7 @@ export default class App extends Component {
 
         <div className="Intro">
           <h2 className="Intro-text"> Dear <span className="title"></span>s,</h2>
-          <h1 className="Intro-text"> Let's bring it to real world! Exclusive art shows, meetups, limited edition goods waiting for your NFTs.</h1>  
+          <h1 className="Intro-text"> Wear a <div className="hovertext"><u> shoecharm </u><img className="hovertext" src={shoecharm} alt=""/></div> to <a href="https://gagosian.com/exhibitions/2022/takashi-murakami-an-arrow-through-history/">Gagosian NYC</a> and be part of a <div className="hovertext"> <u> groupshot </u><img className="hovertext" src={groupshot} alt=""/></div></h1>  
           {/* <h3 className="Intro-text"> Are you coming to <a href="https://gagosian.com/exhibitions/2022/takashi-murakami-an-arrow-through-history/">Gagosian NYC</a> <br/>in May?</h3> */}
           <h2> Verify your address to see if you're eligible </h2>
           <MetaMaskAuth onAddressChanged={(address) => {}} />
@@ -198,8 +191,6 @@ export default class App extends Component {
   
   function DisplayNFT({userAddress}) {
     const [nftListUrl, setNftListUrl] = useState(null)
-    const [user, setUser] = useState("");
-    const [likedList, setLikedList] = useState("");
 
     const address = `0x8e2dc68f3d3a8391cc7f380b2ff6adf1f6f3073a`; 
     
@@ -211,24 +202,11 @@ export default class App extends Component {
     useEffect(() => {
       fetchList();
     }, [address]);
-
-    function submit (user,likedList) {
-      console.log('user:', user, 'created an invitation for the chosen NFT: ',likedList)
-      const userRef = addDoc(collection(db, "Users"), {
-            address: user,
-            likedToken: likedList,
-            // created: serverTimestamp()
-          });
-      console.log("added user info for User Reference ID: ", userRef);
-      setUser(user);
-      setLikedList(likedList);
-    };
-  
     
     //change to userAddress later
     let imageElements
     if(nftListUrl) {
-      imageElements = nftListUrl.map(value =><div className="gallery"><img align="top" src={value.url} onClick={() => submit(address, value.tokenId)} alt="" /> <div className="text">{value.tokenId}</div></div> )
+      imageElements = nftListUrl.map(value =><div className="gallery"><img src={value.url}/><div class="text">{value.tokenId}</div></div> )
     } else {
       imageElements = []
     }
@@ -237,72 +215,33 @@ export default class App extends Component {
     console.log('Running Display NFT, fetched urls')
     console.log(nftListUrl)
 
-    const timestamp = Date.now(); // This would be the timestamp you want to format
-    new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp)
-
     return nftListUrl ? (
-
-      <div>
-        {(() => {
-          if (likedList) {
-            return (
+        <div>
             <div>
-                <h2>your invitation for Clone {likedList} is here:</h2>
-                <h3>Please take a screenshot and bring it to the venue</h3>  
-                <h2></h2>
-                <div>
-                <img src={`https://clonex-assets.rtfkt.com/images/${likedList}.png`} width="30%" height="50%" alt=""/>
-                <img src={qrplaceholder} width="30%" height="50%" alt=""/>
-                </div>
-                <h3>Murakami Exhibition is open for May 11th - June 25th at Gagosian gallery in NYC!</h3>
+                <h2><br/>Congrats, fellow CloneX holder!</h2>
+                <h3><br/>You are eligible to order a shoecharm for your Clone. </h3>
+                <img src={groupshot} width="98%" height="98%" alt="'QR code here'" />
+                <img src={shoecharm1} width="50%"/>
+                <h3>
+                <br/>When you arrive at the venue,
+                <br/> a chip inside of the charm will check you in for a groupshot as POAP. 
+                <br/> Be ready for surprise airdrops and perks as well.</h3>
+                
+                <h3>You can wear this to any future community events. </h3>
+                <h3><br/>Please pick one NFT from your wallet below to redeem a shoecharm</h3>
+                
             </div>
-            )
-          } else {
-            return (<div>
-              <div>
-                <h1><br/>Congrats, fellow CloneX holder!</h1>
-                <h2><br/>There is an event for your project in May, @NYC! </h2>
-                <img src={eventinfo} width="98%" height="98%" alt="'QR code here'" />
-                <h2><br/><strong>Please pick one NFT from your wallet below</strong> to redeem a ticket and be included in the attendance check!</h2>
-              </div>
 
-              <div className="clonepic">
-              {imageElements}
-              {/* <img src="https://clonex-assets.rtfkt.com/images/2123.png" width="50%" height="50%" alt='Clone image here'/> */}
-              </div>
+            <div className="clonepic">
+            {imageElements}
+            {/* <img src="https://clonex-assets.rtfkt.com/images/2123.png" width="50%" height="50%" alt='Clone image here'/> */}
+            </div>
 
-              <div>
-              <div><h2>/***order window here***/</h2></div>
-              <h3>See you in May 16th at Gagosian gallery!</h3>
-              </div>
-            </div>)
-          }
-        })()}
-      </div>
-      
-
-        // <div>
-        //   likedList? (
-        //     <div><h1>your invitation for {</h1></div>
-
-        //   ):
-        //   <div>
-        //           <h1><br/>Congrats, fellow CloneX holder!</h1>
-        //           <h2><br/>There is an event for your project in May, @NYC! </h2>
-        //           <img src={eventinfo} width="98%" height="98%" alt="'QR code here'" />
-        //           <h2><br/><strong>Please pick one NFT from your wallet below</strong> to redeem a ticket and be included in the attendance check!</h2>
-        //         </div>
-
-        //         <div className="clonepic">
-        //         {imageElements}
-        //         {/* <img src="https://clonex-assets.rtfkt.com/images/2123.png" width="50%" height="50%" alt='Clone image here'/> */}
-        //         </div>
-
-        //         <div>
-        //         <div><h2>/***order window here***/</h2></div>
-        //         <h3>See you in May 16th at Gagosian gallery!</h3>
-        //         </div>
-        // </div>
+            <div>
+            </div>
+            <div><h2>/***order window here***/</h2></div>
+            <h3>See you in May 16th at Gagosian gallery!</h3>
+        </div>
         
     ):
     <div>`oops no NFTs to show'</div>;
