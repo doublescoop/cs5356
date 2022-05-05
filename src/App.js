@@ -5,9 +5,6 @@ import React, { Component, useEffect, useState } from "react";
 // import CloneXLogo from "./images/X.png";
 import MoaLogo from "./images/moa_logo_png.png"
 import styles from "./main-stylesheet.css";
-import shoecharm from "./images/shoecharm.png"
-import shoecharm1 from "./images/shoecharmpng.png"
-import groupshot from "./images/groupshot1.jpeg"
 import eventinfo from "./images/murakamievent.png"
 import qrplaceholder from './images/qrdemo.png'
 import db from "./services/firestore";
